@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Fellowship</a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="loggedIn">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Coupling</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Messages</a>
+        </li>
+      </ul>
+      <form class="d-flex ms-auto" #LoginForm="ngForm" (ngSubmit)="login()" autocomplete="off" *ngIf="!loggedIn">
+          <input name="username" [(ngModel)]="loginInfo.username" class="form-control me-2" type="search" placeholder="Username" aria-label="Search">
+          <input name="password" [(ngModel)]="loginInfo.password" class="form-control me-2" type="search" placeholder="Password" aria-label="Search">
+          <button class="btn btn-outline-light" type="submit">Login</button>
+      </form>
+      <div class="d-flex" *ngIf="loggedIn">
+        <div class="btn-group">
+          <button class="btn btn-warning btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Welcome <strong>Hüseyin</strong> !</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-light mx-1" type="submit" (click)="logOut()">LogOut</button>
+      </div>    
+    </div>
+  </div>
+</nav>

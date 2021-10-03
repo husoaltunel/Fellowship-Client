@@ -1,0 +1,21 @@
+<div class="d-flex flex-column align-items-center w-50 mx-auto mt-5">
+    <h3 class="text-info">SIGN UP</h3>
+    <hr class="bg-dark w-50">
+    <form #registerForm="ngForm" (ngSubmit)="register()">
+        <div class="row mb-2">
+            <div class="col-3">
+                <label class="form-label mb-4">Username</label>
+                <label class="form-label mb-4">Password</label>
+                <label class="form-label">Email</label>
+            </div>
+            <div class="col-9">
+                <input name="username" class="form-control form-control-sm mb-3" type="text" [(ngModel)]="newUser.username">
+                <input name="password" class="form-control form-control-sm mb-3" type="password" [(ngModel)]="newUser.password">
+                <input name="email" class="form-control form-control-sm" type="email" [(ngModel)]="newUser.email">
+                <div class="my-4 d-flex">
+                    <button class="btn btn-info me-2">Register</button> <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
