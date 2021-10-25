@@ -1,0 +1,14 @@
+.card-text,.text-muted{
+    margin: 0;
+}
+.card {
+    max-height: 200px;
+    width:10rem;
+    overflow: hidden;
+    margin-right: 2rem;
+}
+.card:hover {
+    transform: scale(1.2,1.2);
+    transition-duration : 500ms;
+    opacity: 0.8;
+}

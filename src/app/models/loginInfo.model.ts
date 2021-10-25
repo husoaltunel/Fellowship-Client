@@ -7,7 +7,7 @@ class accessToken {
     expiration : string;
 }
 
-export class UserAuthModel {
+export class LoginInfoModel {
     username: string;
     accessToken: accessToken;
     constructor() {
