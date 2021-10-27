@@ -5,7 +5,9 @@ import { mergeMap } from 'rxjs/operators';
 import { LoginModel } from 'src/app/models/login.model';
 import { RegisterModel } from 'src/app/models/register.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { setLoginInfo } from '../helpers/registerHelper';
+import { setLoginInfo } from '../../helpers/register-helper';
+
+
 
 
 

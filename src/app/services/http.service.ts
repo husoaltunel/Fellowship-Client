@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { getHttpOptions } from './helpers/http-service-helper';
+
 
 
 
@@ -18,10 +18,10 @@ export class HttpService {
   }
 
   get(path: string) : Observable<any>{
-    return this.http.get(this.url + path,getHttpOptions())
+    return this.http.get(this.url + path)
   }
   post(path: string, model: any) : Observable<any> {
-    return this.http.post(this.url + path, model, getHttpOptions())
+    return this.http.post(this.url + path, model)
   }
 
 }

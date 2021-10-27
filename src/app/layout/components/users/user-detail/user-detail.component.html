@@ -1,1 +1,66 @@
-<p>user-detail works!</p>
+<div class="container">
+    <div class="row">
+
+        <div class="col-4">
+            <div class="card">
+                <img src="{{imagePath}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.knownAs}} </h5>
+                </div>
+                <ul class="list-group list-group-flush" *ngIf="checkGenderIsMale(user.gender)">
+                    <label class="bg-info">Location</label>
+                    <li class="list-group-item">{{user.country}} , {{user.city}}</li>
+                    <label class="bg-info">Age</label>
+                    <li class="list-group-item">{{user.age}}</li>
+                    <label class="bg-info">Last Active</label>
+                    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
+                    <label class="bg-info">Member since</label>
+                    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
+                </ul>
+                <ul class="list-group list-group-flush" *ngIf="!checkGenderIsMale(user.gender)">
+                    <label class="bg-danger">Location</label>
+                    <li class="list-group-item">{{user.country}} , {{user.city}}</li>
+                    <label class="bg-danger">Age</label>
+                    <li class="list-group-item">{{user.age}}</li>
+                    <label class="bg-danger">Last Active</label>
+                    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
+                    <label class="bg-danger">Member since</label>
+                    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
+                </ul>
+                <div class="card-body">
+                    <button class="btn btn-danger"><i class="far fa-heart fa"></i> Like</button>
+                    <button class="btn btn-success"><i class="far fa-envelope"></i> Message</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true">About {{user.knownAs}} </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="interests-tab" data-bs-toggle="tab" data-bs-target="#interests" type="button" role="tab" aria-controls="interests" aria-selected="false">Interests</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="photos-tab" data-bs-toggle="tab" data-bs-target="#photos" type="button" role="tab" aria-controls="photos" aria-selected="false">Photos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+                  </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <h5>Introduction</h5>
+                    {{user.introduction}}
+                    <h5>Looking for</h5>
+                    {{user.lookingFor}}
+                 </div>
+                <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">{{user.interests}}</div>
+                <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">photos</div>
+                <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">messages</div>
+              </div>
+
+        </div>
+    </div>
+
+</div>

@@ -2,13 +2,34 @@
     margin: 0;
 }
 .card {
-    max-height: 200px;
+    max-height: 30vh;
     width:10rem;
     overflow: hidden;
     margin-right: 2rem;
 }
 .card:hover {
-    transform: scale(1.2,1.2);
+    max-height: 35vh;
+    transform: scale(1.1,1.1);
     transition-duration : 500ms;
     opacity: 0.8;
+}
+.buttonsDiv {
+    
+margin-top: 10rem;
+}
+.card:hover .buttonsDiv{
+    margin-top:0px;
+    transition: all 0.5s ease-in-out;      
+}
+
+.iconButton {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background-color: white;
+    
+}
+.userIcon {
+    margin: 0.5rem;
+    color : #5D3FD3;
 }

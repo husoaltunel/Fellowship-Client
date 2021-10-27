@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { setImagePath } from 'src/app/layout/helpers/image-helper';
 import { UserModel } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment';
 
@@ -17,11 +18,10 @@ export class UserCardComponent implements OnInit {
     this.user = new UserModel();
     this.baseImagePath = environment.baseImagePath
     this.imagePath = ""
-    
   }
 
   ngOnInit(): void {
-    this.imagePath = this.baseImagePath + this.user.imageUrl;
+    this.imagePath = setImagePath(this.user.imageUrl);
   }
 
 }

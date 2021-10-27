@@ -3,6 +3,11 @@
     <div class="card-body text-center">
         <i class="fas fa-user-circle"></i>
         <p class="card-text">{{user.knownAs}}</p>
-        <p class="text-muted">{{user.city}}</p>
+        <p style="max-height:1rem;" class="text-muted">{{user.city}}</p>
+    </div>
+    <div class="buttonsDiv d-flex">
+        <button class="iconButton" routerLink="/user-detail/{{user.username}}"><i class="userIcon fas fa-house-user fa-2x"></i></button>
+        <button class="iconButton"><i class="userIcon far fa-heart fa-2x"></i></button>
+        <button class="iconButton"><i class="userIcon fas fa-envelope fa-2x"></i></button>
     </div>
 </div>
