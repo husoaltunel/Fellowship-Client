@@ -16,16 +16,17 @@ export class UserService {
 
   getUsers() : Observable<UserModel[]>{
     return this.http.get(this.path + "get-users").pipe(
-      map(response =>{
-        return response.data
-      })
+      map(response =>response.data)
     );
   }
   getUserByUserName(username : string) : Observable<UserModel>{
     return this.http.get(this.path + `get-user-by-username/${username}`).pipe(
-      map(response => {
-       return response.data
-      })
+      map(response => response.data)
+    )
+  }
+  updateUser(user : UserModel): Observable<any>{
+    return this.http.post(this.path + "update-user",user).pipe(
+      map(response => response)
     )
   }
 }

@@ -2,13 +2,14 @@
     margin: 0;
 }
 .card {
-    max-height: 30vh;
+    max-height: 14rem;
     width:10rem;
     overflow: hidden;
     margin-right: 2rem;
+    margin-bottom: 1rem;
 }
 .card:hover {
-    max-height: 35vh;
+    max-height: 17rem;
     transform: scale(1.1,1.1);
     transition-duration : 500ms;
     opacity: 0.8;

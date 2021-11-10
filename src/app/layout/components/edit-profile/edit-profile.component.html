@@ -1,6 +1,5 @@
 <div class="container">
     <div class="row">
-
         <div class="col-4">
             <div class="card">
                 <img src="{{profileImagePath}}" class="card-img-top" alt="...">
@@ -27,13 +26,14 @@
                     <label class="bg-danger">Member since</label>
                     <li class="list-group-item">{{user.created | date : 'medium'}} </li>
                 </ul>
-                <div class="card-body">
-                    <button class="btn btn-danger"><i class="far fa-heart fa"></i> Like</button>
-                    <button class="btn btn-success"><i class="far fa-envelope"></i> Message</button>
+                <div class="card-body text-center">
+                    <button class="btn btn-success" form="editForm" ><i class="fas fa-save"></i> Save
+                        changes</button>
                 </div>
             </div>
         </div>
         <div class="col-8">
+            <div class="alert alert-warning" *ngIf="editForm.dirty">You have made changes <i class="fas fa-exclamation-circle fa-lg"></i></div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about"
@@ -44,24 +44,43 @@
                     <button class="nav-link" id="photos-tab" data-bs-toggle="tab" data-bs-target="#photos" type="button"
                         role="tab" aria-controls="photos" aria-selected="false">Photos</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages"
-                        type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
-                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <h5>Introduction</h5>
-                    {{user.introduction}}
-                    <h5>Looking for</h5>
-                    {{user.lookingFor}}
-                    <h5>Interests</h5>
-                    {{user.interests}}
-                </div>
-                <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">
-                    <app-image-carousel [images] = "images" [height]=40 [width]=40 ></app-image-carousel>                 
-                </div>
-                <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">messages</div>
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+                    <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+                        <div class="form-group">
+                            <h5>Known as</h5>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="knownAs" rows="2"
+                                [(ngModel)]="user.knownAs"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5>Introduction</h5>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="introduction" rows="7"
+                                [(ngModel)]="user.introduction"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5>Looking for</h5>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="lookingFor" rows="7"
+                                [(ngModel)]="user.lookingFor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5>Interests</h5>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="interests" rows="5"
+                                [(ngModel)]="user.interests"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5>City</h5>
+                            <input class="form-control form-control-sm" type="text" name="city" [(ngModel)]="user.city">
+                            <h5>Country</h5>
+                            <input class="form-control form-control-sm" type="text" name=country [(ngModel)]="user.country">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">
+                        edit photos
+                    </div>
+                </form>
+
+
             </div>
 
         </div>

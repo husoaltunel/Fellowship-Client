@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
 
 
+
+
 import { LayoutComponent } from './layout.component';
 
 const routes: Routes = [
@@ -13,6 +15,7 @@ const routes: Routes = [
   { path: "user-list", component: LayoutComponent, loadChildren: () => import("./components/users/user-list/user-list.module").then(m => m.UserListModule), canActivate: [AuthGuard]  },
   { path: "user-detail/:id", component: LayoutComponent, loadChildren: () => import("./components/users/user-detail/user-detail.module").then(m => m.UserDetailModule), canActivate: [AuthGuard]  },
   { path: "messages", component: LayoutComponent, loadChildren: () => import("./components/messages/messages.module").then(m => m.MessagesModule), canActivate: [AuthGuard] },
+  {path : "edit-profile" , component : LayoutComponent , loadChildren:() => import("./components/edit-profile/edit-profile.module").then(m => m.EditProfileModule) , canActivate : [AuthGuard]}
 
 ];
 

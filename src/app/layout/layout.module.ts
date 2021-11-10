@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -23,5 +24,6 @@ import { FormsModule } from '@angular/forms';
     LayoutRoutingModule,
     FormsModule
   ]
+  
 })
 export class LayoutModule { }
