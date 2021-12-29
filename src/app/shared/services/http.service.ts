@@ -17,11 +17,17 @@ export class HttpService {
 
   }
 
-  get(path: string) : Observable<any>{
-    return this.http.get(this.url + path)
+  get(path: string,responseType? : object) : Observable<any>{
+    return this.http.get(this.url.concat(path),responseType)
   }
   post(path: string, model: any) : Observable<any> {
-    return this.http.post(this.url + path, model)
+    return this.http.post(this.url.concat(path), model)
+  }
+  put(path : string,model : any) : Observable<any>{
+    return this.http.put(this.url.concat(path), model)
+  }
+  delete(path : string,id : string) : Observable<any>{
+    return this.http.delete(this.url.concat(path).concat(id))
   }
 
 }

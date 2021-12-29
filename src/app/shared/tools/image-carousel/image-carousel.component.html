@@ -1,14 +1,25 @@
 <div class="carousel" [style.width]="width+'rem'" [style.height]="height+'rem'" >
-    <ngb-carousel #carousel [interval]="1500" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
-        <ng-template ngbSlide *ngFor="let img of images; index as i">
-          <div class="carousel-caption">
-            <h3>My slide {{i + 1}} title</h3>
+  <ngb-carousel #carousel [interval]="1500" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+    (slide)="onSlide($event)">
+    <ng-container *ngFor="let img of images; index as i" >
+      <ng-template ngbSlide *ngIf="!isSelectedImage">
+        <div class="carousel-caption">
+          <h3>My slide {{i + 1}} title</h3>
+        </div>
+        <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+          <div class="picsum-img-wrapper">
+            <img [src]="img" alt="My image {{i + 1}} description" [style.width]="width +'rem'"
+              [style.height]="height + 'rem'">
           </div>
-          <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-            <div class="picsum-img-wrapper">
-              <img [src]="img" alt="My image {{i + 1}} description" [style.width]="width +'vw'" [style.height]="height + 'vh'">
-            </div>
-          </a>
-        </ng-template>
-      </ngb-carousel>
+        </a>
+      </ng-template>
+    </ng-container>
+    <ng-template ngbSlide *ngIf="isSelectedImage">
+      <a href="" target="_blank" rel="nofollow noopener noreferrer">
+        <div class="picsum-img-wrapper">
+          <img [src]="selectedImage" [style.width]="width +'rem'" [style.height]="height + 'rem'">
+        </div>
+      </a>
+    </ng-template>
+  </ngb-carousel>
 </div>

@@ -3,8 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStat
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AuthMessages } from '../constants/auth-messages';
-import {AuthService } from '../services/auth.service';
-import { SweetAlertService } from '../services/sweet-alert.service';
+import { AuthService } from '../shared/services/auth.service';
+import { SweetAlertService } from '../shared/services/sweet-alert.service';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {

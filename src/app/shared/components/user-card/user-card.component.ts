@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { setImagePath } from 'src/app/layout/helpers/image-helper';
-import { UserModel } from 'src/app/models/user.model';
+import { DomSanitizer } from '@angular/platform-browser';
+import {  ImageHelper } from 'src/app/layout/helpers/image-helper';
 import { environment } from 'src/environments/environment';
+import { UserModel } from '../../models/user.model';
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-user-card',
@@ -10,18 +12,27 @@ import { environment } from 'src/environments/environment';
 })
 export class UserCardComponent implements OnInit {
 
-  @Input() user : UserModel
-  baseImagePath : string;
-  imagePath : string;
+  @Input() user: UserModel
+  imagePath: any;
 
-  constructor() { 
+  constructor(private photoService: PhotoService,private imageHelper : ImageHelper) {
     this.user = new UserModel();
-    this.baseImagePath = environment.baseImagePath
-    this.imagePath = ""
+
   }
 
   ngOnInit(): void {
-    this.imagePath = setImagePath(this.user.imageUrl);
+    this.getProfilePhotoByUsername();
+  }
+
+  getProfilePhotoByUsername() {
+    return this.photoService.getProfilePhotoByUsername(this.user.username).subscribe((response: any) => {
+
+      if (response.success) {
+        this.imagePath = this.imageHelper.ConvertFileToImage(response.data)
+      }
+
+    })
+
   }
 
 }

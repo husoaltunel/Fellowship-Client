@@ -1,4 +1,5 @@
-import { LoginInfoModel } from "src/app/models/loginInfo.model";
+import { LoginInfoModel } from "../../models/loginInfo.model";
+
 
 
 export function setUserStateToLocalStorage(loginInfo: LoginInfoModel) {

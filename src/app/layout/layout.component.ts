@@ -1,4 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SpinnerService } from '../shared/services/spinner.service';
+
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +10,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  render : Observable<boolean>;
+  constructor(public spinnerService : SpinnerService) { 
+    spinnerService.visibility.pipe(response => this.render = response)
+  }
 
   ngOnInit(): void {
   }

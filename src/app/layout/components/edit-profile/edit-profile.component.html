@@ -1,39 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <div class="card">
-                <img src="{{profileImagePath}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{user.knownAs}} </h5>
-                </div>
-                <ul class="list-group list-group-flush" *ngIf="checkGenderIsMale(user.gender)">
-                    <label class="bg-info">Location</label>
-                    <li class="list-group-item">{{user.country}} , {{user.city}}</li>
-                    <label class="bg-info">Age</label>
-                    <li class="list-group-item">{{user.age}}</li>
-                    <label class="bg-info">Last Active</label>
-                    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
-                    <label class="bg-info">Member since</label>
-                    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
-                </ul>
-                <ul class="list-group list-group-flush" *ngIf="!checkGenderIsMale(user.gender)">
-                    <label class="bg-danger">Location</label>
-                    <li class="list-group-item">{{user.country}} , {{user.city}}</li>
-                    <label class="bg-danger">Age</label>
-                    <li class="list-group-item">{{user.age}}</li>
-                    <label class="bg-danger">Last Active</label>
-                    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
-                    <label class="bg-danger">Member since</label>
-                    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
-                </ul>
-                <div class="card-body text-center">
-                    <button class="btn btn-success" form="editForm" ><i class="fas fa-save"></i> Save
-                        changes</button>
-                </div>
-            </div>
+
+            <app-user-detail-sidebar [user]="user" [profileImagePath]="profileImagePath"></app-user-detail-sidebar>
         </div>
         <div class="col-8">
-            <div class="alert alert-warning" *ngIf="editForm.dirty">You have made changes <i class="fas fa-exclamation-circle fa-lg"></i></div>
+            <div class="alert alert-warning" *ngIf="editForm.dirty">You have made changes <i
+                    class="fas fa-exclamation-circle fa-lg"></i></div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about"
@@ -46,8 +19,8 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
-                    <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+                <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
                         <div class="form-group">
                             <h5>Known as</h5>
                             <textarea class="form-control" id="exampleFormControlTextarea1" name="knownAs" rows="2"
@@ -72,14 +45,35 @@
                             <h5>City</h5>
                             <input class="form-control form-control-sm" type="text" name="city" [(ngModel)]="user.city">
                             <h5>Country</h5>
-                            <input class="form-control form-control-sm" type="text" name=country [(ngModel)]="user.country">
+                            <input class="form-control form-control-sm" type="text" name=country
+                                [(ngModel)]="user.country">
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <div class="row">
+                            <div class="col-9">
+                                <app-image-carousel [images]="images" [height]=15 [width]=35></app-image-carousel>
+                            </div>
+                            <div class="col-3">
+                                <h3 class="text-info mb-4">Upload Images</h3>
+                                <input id="imagesInput" multiple type="file" class="form-control" (change)="upload($event)">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap mt-2">
+                            <div class="imageDiv d-flex justify-content-center flex-column"
+                                *ngFor="let image of images">
+                                <app-small-image [image]="image"></app-small-image>
+                                <button class="btn btn-sm btn-danger btnDelete">Delete</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">
-                        edit photos
-                    </div>
-                </form>
 
+                </div>
 
             </div>
 

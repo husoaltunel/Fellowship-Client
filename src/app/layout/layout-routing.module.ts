@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: "home", component: LayoutComponent, loadChildren: () => import("./components/home/home.module").then(m => m.HomeModule) },
   { path: "register", component: LayoutComponent, loadChildren: () => import("./components/register/register.module").then(m => m.RegisterModule) },
   { path: "lists", component: LayoutComponent, loadChildren: () => import("./components/lists/lists.module").then(m => m.ListsModule), canActivate: [AuthGuard]  },
-  { path: "user-list", component: LayoutComponent, loadChildren: () => import("./components/users/user-list/user-list.module").then(m => m.UserListModule), canActivate: [AuthGuard]  },
+  { path: "user-list", component: LayoutComponent, loadChildren: () => import("./components/users/user-list/user-list.module").then(m => m.UserListModule)  ,canActivate:[AuthGuard]},
   { path: "user-detail/:id", component: LayoutComponent, loadChildren: () => import("./components/users/user-detail/user-detail.module").then(m => m.UserDetailModule), canActivate: [AuthGuard]  },
-  { path: "messages", component: LayoutComponent, loadChildren: () => import("./components/messages/messages.module").then(m => m.MessagesModule), canActivate: [AuthGuard] },
+  { path: "messages", component: LayoutComponent, loadChildren: () => import("./components/messages/messages.module").then(m => m.MessagesModule), canActivate: [AuthGuard]},
   {path : "edit-profile" , component : LayoutComponent , loadChildren:() => import("./components/edit-profile/edit-profile.module").then(m => m.EditProfileModule) , canActivate : [AuthGuard]}
 
 ];

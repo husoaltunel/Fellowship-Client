@@ -6,8 +6,7 @@
 
 export const environment = {
   production: false,
-  baseUrl : "https://localhost:44328/api/",
-  baseImagePath : "../../../../assets/images/"
+  baseUrl : "https://localhost:44328/api/"
 };
 
 /*

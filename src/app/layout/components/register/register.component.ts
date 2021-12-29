@@ -2,9 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
-import { LoginModel } from 'src/app/models/login.model';
-import { RegisterModel } from 'src/app/models/register.model';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoginModel } from 'src/app/shared/models/login.model';
+import { RegisterModel } from 'src/app/shared/models/register.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { setLoginInfo } from '../../helpers/register-helper';
 
 

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { setImagePath } from 'src/app/layout/helpers/image-helper';
-import { UserModel } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
-import { environment } from 'src/environments/environment';
+import { ImageHelper } from 'src/app/layout/helpers/image-helper';
+import { UserModel } from 'src/app/shared/models/user.model';
+import { PhotoService } from 'src/app/shared/services/photo.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 
 
@@ -13,18 +13,18 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
+
   username: string;
   user : UserModel;
-  baseImagePath : string;
-  profileImagePath : string;
+  profileImagePath : any;
   images : string[];
-  constructor(private route: ActivatedRoute,private userService : UserService) {
+
+  constructor(private route: ActivatedRoute,private userService : UserService,private photoService : PhotoService,private imageHelper : ImageHelper) {
     this.username = this.route.snapshot.paramMap.get("id") || "";
     this.user = new UserModel(); 
-    this.baseImagePath = environment.baseImagePath;
     this.profileImagePath = "";
     this.getUserByUsername();
-    this.images = [];
+    this.getPhotos();
   }
 
   ngOnInit(): void {
@@ -32,14 +32,27 @@ export class UserDetailComponent implements OnInit {
  
 
   getUserByUsername(){
-    this.userService.getUserByUserName(this.username).subscribe(response => {
-      this.user = response;
-      this.profileImagePath = setImagePath(this.user.imageUrl);
-      this.images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `${this.baseImagePath + this.user.imageUrl}`)
+    this.userService.getUserByUserName(this.username).subscribe((response : any) => {
+      if(response.success){
+          this.user = response.data;
+          this.getProfilePhotoByUsername();
+      }   
     });
   }
-  checkGenderIsMale(gender : string){
-      return gender == "male"
+  getPhotos(){
+    this.photoService.getPhotosByUsername(this.username).subscribe(response => {
+      if(response.success){
+        this.images = this.imageHelper.ConvertFilesToImages(response.data);
+      }
+    })
+  }
+  getProfilePhotoByUsername() {
+    return this.photoService.getProfilePhotoByUsername(this.user.username).subscribe(response => {
+      if (response.success) {
+        this.profileImagePath = this.imageHelper.ConvertFileToImage(response.data);
+      }
+
+    })
   }
 
 }

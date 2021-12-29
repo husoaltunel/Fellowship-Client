@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthMessages } from 'src/app/constants/auth-messages';
-import { LoginModel } from 'src/app/models/login.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { getCurrentUsernameFromLocalStorage, getLoginStateFromLocalStorage, setLoginStateToLocalStorage } from 'src/app/services/helpers/local-storage-helper';
-import { SweetAlertService } from 'src/app/services/sweet-alert.service';
-import { UserService } from 'src/app/services/user.service';
+import { LoginModel } from 'src/app/shared/models/login.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { getCurrentUsernameFromLocalStorage, getLoginStateFromLocalStorage, setLoginStateToLocalStorage } from 'src/app/shared/services/helpers/local-storage-helper';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
+
 
 
 @Component({
@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   loginInfo: LoginModel;
   loggedIn: boolean;
 
-  constructor(private authService: AuthService,private userService : UserService, private router: Router, private sweetAlertService: SweetAlertService) {
+  constructor(private authService: AuthService, private router: Router, private sweetAlertService: SweetAlertService) {
     this.loginInfo = new LoginModel();
     this.setLoggedIn();
     this.loggedIn = this.getLoggedIn();

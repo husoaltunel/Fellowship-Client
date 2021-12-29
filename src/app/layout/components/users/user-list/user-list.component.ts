@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserModel } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
+import { map } from 'rxjs/operators';
+import { UserModel } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -20,6 +21,8 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers() : Observable<UserModel[]> {
-    return this.userService.getUsers();
+    return this.userService.getUsers().pipe(
+      map(response =>response.data)
+    );;
   }
 }

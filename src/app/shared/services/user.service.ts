@@ -9,24 +9,22 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class UserService {
+
   private path: string;
+
   constructor(private http: HttpService) {
     this.path = "Users/";
   }
 
-  getUsers() : Observable<UserModel[]>{
-    return this.http.get(this.path + "get-users").pipe(
-      map(response =>response.data)
-    );
+  getUsers() : Observable<any>{
+    return this.http.get(this.path);
   }
-  getUserByUserName(username : string) : Observable<UserModel>{
-    return this.http.get(this.path + `get-user-by-username/${username}`).pipe(
-      map(response => response.data)
-    )
+  getUserByUserName(username : string) : Observable<any>{
+    return this.http.get(this.path.concat(`get-user-by-username/${username}`));
   }
   updateUser(user : UserModel): Observable<any>{
-    return this.http.post(this.path + "update-user",user).pipe(
-      map(response => response)
-    )
+    return this.http.put(this.path,user);
   }
+
+
 }

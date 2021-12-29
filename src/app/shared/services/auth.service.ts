@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   login(model: LoginModel)  {
-    return this.http.post(this.path + "login", model).pipe(
+    return this.http.post(this.path.concat("login"), model).pipe(
       map((response : any)  => {
         if(response.success){
           this.loginInfo = response.data;
@@ -36,10 +36,10 @@ export class AuthService {
     setLoginStateToLocalStorage(false);
   }
   register(model : RegisterModel){
-    return this.http.post(this.path + "register",model)
+    return this.http.post(this.path.concat("register"),model)
   }
   isLoggedIn(){
-    return this.http.get(this.path + "is-logged-in");
+    return this.http.get(this.path.concat("is-logged-in"));
   }
   
 }

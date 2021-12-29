@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { carouselService } from '../../services/data-sharing/carousel.service';
 
 @Component({
   selector: 'app-image-carousel',
@@ -11,14 +12,22 @@ export class ImageCarouselComponent implements OnInit {
   @Input() images : string[];
   @Input() width : number;
   @Input() height : number;
-
-  constructor() {
+  
+  isSelectedImage : boolean;
+  selectedImage : string;
+  constructor(private profileService : carouselService) {
     this.images = [];
     this.width = 0;
     this.height = 0;
    }
 
   ngOnInit(): void {
+    this.profileService.isSelectedImage.subscribe(response =>{
+      this.isSelectedImage = response;
+    })
+    this.profileService.selectedImage.subscribe(response => {
+      this.selectedImage = response;
+    })
   }
 
   paused = false;

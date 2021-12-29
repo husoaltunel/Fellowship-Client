@@ -4,8 +4,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { ImageCarouselComponent } from './shared/tools/image-carousel/image-carousel.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { UserDetailSidebarComponent } from './shared/components/user-detail-sidebar/user-detail-sidebar.component';
+import { SmallImageComponent } from './shared/components/small-image/small-image.component';
 
 
 @NgModule({
@@ -15,10 +17,14 @@ import { ImageCarouselComponent } from './shared/tools/image-carousel/image-caro
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
 
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true},
+    {provide:HTTP_INTERCEPTORS,useClass:SpinnerInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

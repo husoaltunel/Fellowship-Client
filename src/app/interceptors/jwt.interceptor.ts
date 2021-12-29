@@ -6,8 +6,8 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { getUserStateFromLocalStorage } from '../services/helpers/local-storage-helper';
-import { LoginInfoModel } from '../models/loginInfo.model';
+import { LoginInfoModel } from '../shared/models/loginInfo.model';
+import { getUserStateFromLocalStorage } from '../shared/services/helpers/local-storage-helper';
 
 
 @Injectable()
@@ -21,8 +21,7 @@ export class JwtInterceptor implements HttpInterceptor {
     this.user = getUserStateFromLocalStorage();
     if (this.user.username) {
       const duplicate = req.clone({
-        setHeaders: {
-          'Content-Type': 'application/json',
+        setHeaders: {         
           'Authorization': `Bearer ${this.user.accessToken.token}`
         }
       })
