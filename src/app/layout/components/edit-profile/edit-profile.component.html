@@ -1,10 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-
-            <app-user-detail-sidebar [user]="user" [profileImagePath]="profileImagePath"></app-user-detail-sidebar>
+            <div class="card">
+                <app-user-detail-sidebar [user]="user" [profileImagePath]="profileImagePath"></app-user-detail-sidebar>
+                <div class="card-body d-flex justify-content-center">
+                    <button class="btn btn-success" form="editForm" ><i class="fas fa-save"></i> Save
+                        changes</button>
+                </div>
+            </div>
         </div>
-        <div class="col-8">
+        <div class="col-8 editSide">
             <div class="alert alert-warning" *ngIf="editForm.dirty">You have made changes <i
                     class="fas fa-exclamation-circle fa-lg"></i></div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -56,20 +61,19 @@
                     <div class="d-flex justify-content-center flex-wrap">
                         <div class="row">
                             <div class="col-9">
-                                <app-image-carousel [images]="images" [height]=15 [width]=35></app-image-carousel>
+                                <app-image-carousel [images]="images" [height]=25 [width]=35 ></app-image-carousel>
                             </div>
                             <div class="col-3">
                                 <h3 class="text-info mb-4">Upload Images</h3>
-                                <input id="imagesInput" multiple type="file" class="form-control" (change)="upload($event)">
+                                <input id="imagesInput" multiple type="file" class="form-control"
+                                    (change)="upload($event)">
                             </div>
                         </div>
-
-                        <div class="d-flex flex-wrap mt-2">
-                            <div class="imageDiv d-flex justify-content-center flex-column"
-                                *ngFor="let image of images">
-                                <app-small-image [image]="image"></app-small-image>
-                                <button class="btn btn-sm btn-danger btnDelete">Delete</button>
-                            </div>
+                    </div>
+                    <div class="d-flex flex-wrap mt-2">
+                        <div class="imageDiv d-flex justify-content-center flex-column" *ngFor="let image of images">
+                            <app-small-image [image]="image"></app-small-image>
+                            <button class="btn btn-sm btn-danger btnDelete mt-2" (click)="deletePhoto(image.id)" >Delete</button>
                         </div>
                     </div>
 

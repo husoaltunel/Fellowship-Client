@@ -1,9 +1,6 @@
-export class PhotoModel {
-    url : string
-    isMain : boolean
 
-    constructor(){
-        this.url = "";
-        this.isMain = false;
-    }
+export class PhotoModel {
+    id : number
+    url : any
+    
 }

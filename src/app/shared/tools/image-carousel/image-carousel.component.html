@@ -8,7 +8,7 @@
         </div>
         <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
           <div class="picsum-img-wrapper">
-            <img [src]="img" alt="My image {{i + 1}} description" [style.width]="width +'rem'"
+            <img [src]="img.url" alt="My image {{i + 1}} description" [style.width]="width +'rem'"
               [style.height]="height + 'rem'">
           </div>
         </a>
@@ -17,7 +17,7 @@
     <ng-template ngbSlide *ngIf="isSelectedImage">
       <a href="" target="_blank" rel="nofollow noopener noreferrer">
         <div class="picsum-img-wrapper">
-          <img [src]="selectedImage" [style.width]="width +'rem'" [style.height]="height + 'rem'">
+          <img [src]="selectedImage.url" [style.width]="width +'rem'" [style.height]="height + 'rem'">
         </div>
       </a>
     </ng-template>

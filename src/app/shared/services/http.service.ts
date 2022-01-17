@@ -26,8 +26,8 @@ export class HttpService {
   put(path : string,model : any) : Observable<any>{
     return this.http.put(this.url.concat(path), model)
   }
-  delete(path : string,id : string) : Observable<any>{
-    return this.http.delete(this.url.concat(path).concat(id))
+  delete(path : string,id : number) : Observable<any>{
+    return this.http.delete(this.url.concat(path).concat(id.toString()))
   }
 
 }

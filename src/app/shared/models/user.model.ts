@@ -15,24 +15,6 @@ export class UserModel {
     lastActive: any;
     lookingFor: string;
     interests: string;
-    photos: PhotoModel[];
 
-    constructor() {
-        this.username = ""
-        this.email = ""
-        this.imageUrl = ""
-        this.dateOfBirth = null
-        this.age = ""
-        this.gender = ""
-        this.country = ""
-        this.city = ""
-        this.knownAs = ""
-        this.introduction = ""
-        this.created = null
-        this.lastActive = null
-        this.lookingFor = ""
-        this.interests = ""
-        this.photos = []
-    }
     
 }

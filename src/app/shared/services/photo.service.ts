@@ -22,9 +22,15 @@ export class PhotoService {
     return this.http.get(this.path.concat("get-profile-photo-by-username/").concat(username))
   }
   uploadPhotos(model: FileList) {
-    // const formData = new FormData();
-    // formData.append('Image', model.item(0),model[0].name);
-    return this.http.post(this.path, model);
+    const formData = new FormData();
+    for(let i = 0;i < model.length;i++){
+      formData.append(model[i].name,model[i]);
+    }
+    
+    return this.http.post(this.path, formData);
+  }
+  deletePhotoById(id : number) : Observable<any>{
+    return this.http.delete(this.path,id)
   }
 
 

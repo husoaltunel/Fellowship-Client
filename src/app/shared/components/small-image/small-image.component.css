@@ -1,6 +1,8 @@
 
 img{
-    margin : 1rem;
-    max-width: 8.5rem;
-    max-height: 8.5rem;
+    margin-right : 1rem;
+    margin-top : 1rem;
+    width: 8.5rem;
+    height: 8.5rem;
+    border-radius : 1rem;
 }

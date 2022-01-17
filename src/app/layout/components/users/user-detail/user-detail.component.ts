@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImageHelper } from 'src/app/layout/helpers/image-helper';
+import { PhotoModel } from 'src/app/shared/models/photo.model';
 import { UserModel } from 'src/app/shared/models/user.model';
 import { PhotoService } from 'src/app/shared/services/photo.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -16,13 +17,11 @@ export class UserDetailComponent implements OnInit {
 
   username: string;
   user : UserModel;
-  profileImagePath : any;
-  images : string[];
+  profileImagePath : PhotoModel;
+  images : PhotoModel[];
 
   constructor(private route: ActivatedRoute,private userService : UserService,private photoService : PhotoService,private imageHelper : ImageHelper) {
     this.username = this.route.snapshot.paramMap.get("id") || "";
-    this.user = new UserModel(); 
-    this.profileImagePath = "";
     this.getUserByUsername();
     this.getPhotos();
   }
@@ -42,14 +41,15 @@ export class UserDetailComponent implements OnInit {
   getPhotos(){
     this.photoService.getPhotosByUsername(this.username).subscribe(response => {
       if(response.success){
-        this.images = this.imageHelper.ConvertFilesToImages(response.data);
+        this.images = this.imageHelper.setImages(response.data);
       }
     })
   }
   getProfilePhotoByUsername() {
     return this.photoService.getProfilePhotoByUsername(this.user.username).subscribe(response => {
       if (response.success) {
-        this.profileImagePath = this.imageHelper.ConvertFileToImage(response.data);
+        this.profileImagePath = this.imageHelper.setImage(response.data);
+        let a = 0
       }
 
     })

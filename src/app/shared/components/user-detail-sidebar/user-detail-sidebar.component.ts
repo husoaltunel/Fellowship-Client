@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UsersHelper } from 'src/app/layout/helpers/users-helper';
+import { PhotoModel } from '../../models/photo.model';
 import { UserModel } from '../../models/user.model';
 
 @Component({
@@ -10,9 +11,11 @@ import { UserModel } from '../../models/user.model';
 export class UserDetailSidebarComponent implements OnInit {
 
   @Input() user : UserModel;
-  @Input() profileImagePath : any;
+  @Input() profileImagePath : PhotoModel;
 
-  constructor(public usersHelper : UsersHelper) { }
+  constructor(public usersHelper : UsersHelper) {
+   
+   }
 
   ngOnInit(): void {
   }

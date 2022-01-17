@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { PhotoModel } from '../../models/photo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class carouselService {
 
   private isSelectedImage$ : BehaviorSubject<boolean>;
-  private selectedImage$ : BehaviorSubject<string>;
+  private selectedImage$ : BehaviorSubject<PhotoModel>;
   isSelectedImage : Observable<boolean>;
-  selectedImage : Observable<string>
+  selectedImage : Observable<PhotoModel>
 
   constructor() {
     this.isSelectedImage$ = new BehaviorSubject<boolean>(false)
-    this.selectedImage$ = new BehaviorSubject<string>("");
+    this.selectedImage$ = new BehaviorSubject<PhotoModel>(new PhotoModel());
     this.isSelectedImage = this.isSelectedImage$.asObservable();
     this.selectedImage = this.selectedImage$.asObservable();
    }
@@ -21,7 +22,7 @@ export class carouselService {
    setisSelectedImage(isSelected : boolean){
      this.isSelectedImage$.next(isSelected);
    }
-   setselectedImage(image : string){
+   setselectedImage(image : PhotoModel){
     this.selectedImage$.next(image);
    }
 }

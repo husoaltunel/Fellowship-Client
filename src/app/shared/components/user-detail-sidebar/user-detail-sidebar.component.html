@@ -1,30 +1,24 @@
-<div class="card">
-    <img [src]="profileImagePath" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{user.knownAs}} </h5>
-    </div>
-    <ul class="list-group list-group-flush" *ngIf="usersHelper.checkGenderIsMale(user.gender)">
-        <label class="bg-info">Location</label>
-        <li class="list-group-item">{{user.country}} , {{user.city}}</li>
-        <label class="bg-info">Age</label>
-        <li class="list-group-item">{{user.age}}</li>
-        <label class="bg-info">Last Active</label>
-        <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
-        <label class="bg-info">Member since</label>
-        <li class="list-group-item">{{user.created | date : 'medium'}} </li>
-    </ul>
-    <ul class="list-group list-group-flush" *ngIf="!usersHelper.checkGenderIsMale(user.gender)">
-        <label class="bg-danger">Location</label>
-        <li class="list-group-item">{{user.country}} , {{user.city}}</li>
-        <label class="bg-danger">Age</label>
-        <li class="list-group-item">{{user.age}}</li>
-        <label class="bg-danger">Last Active</label>
-        <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
-        <label class="bg-danger">Member since</label>
-        <li class="list-group-item">{{user.created | date : 'medium'}} </li>
-    </ul>
-    <div class="card-body">
-        <button class="btn btn-danger"><i class="far fa-heart fa"></i> Like</button>
-        <button class="btn btn-success"><i class="far fa-envelope"></i> Message</button>
-    </div>
+<img [src]="profileImagePath?.url" class="card-img-top" alt="...">
+<div class="card-body">
+    <h5 class="card-title">{{user.knownAs}} </h5>
 </div>
+<ul class="list-group list-group-flush" *ngIf="usersHelper.checkGenderIsMale(user.gender)">
+    <label class="bg-info">Location</label>
+    <li class="list-group-item">{{user.country}} , {{user.city}}</li>
+    <label class="bg-info">Age</label>
+    <li class="list-group-item">{{user.age}}</li>
+    <label class="bg-info">Last Active</label>
+    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
+    <label class="bg-info">Member since</label>
+    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
+</ul>
+<ul class="list-group list-group-flush" *ngIf="!usersHelper.checkGenderIsMale(user.gender)">
+    <label class="bg-danger">Location</label>
+    <li class="list-group-item">{{user.country}} , {{user.city}}</li>
+    <label class="bg-danger">Age</label>
+    <li class="list-group-item">{{user.age}}</li>
+    <label class="bg-danger">Last Active</label>
+    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
+    <label class="bg-danger">Member since</label>
+    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
+</ul>
