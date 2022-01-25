@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { carouselService } from '../../services/data-sharing/carousel.service';
 import { PhotoModel } from 'src/app/shared/models/photo.model';
 @Component({
@@ -10,18 +10,21 @@ export class SmallImageComponent implements OnInit {
 
   @Input() image: PhotoModel;
 
-  constructor(private profileService : carouselService) { 
+  @ViewChild('imgEl') imgEl: ElementRef;
+
+  constructor(private profileService: carouselService) {
 
   }
 
   ngOnInit(): void {
   }
 
+
   showInCaraousel(image: PhotoModel) {
     this.profileService.setisSelectedImage(true);
     this.profileService.setselectedImage(image);
   }
-  removeFromCarousel(){
+  removeFromCarousel() {
     this.profileService.setisSelectedImage(false);
   }
 

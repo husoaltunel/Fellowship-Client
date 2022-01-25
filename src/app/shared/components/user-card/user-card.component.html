@@ -2,8 +2,8 @@
     <img [src]="image.url" class="card-img-top" alt="...">
     <div class="card-body text-center">
         <i class="fas fa-user-circle"></i>
-        <p class="card-text">{{user.knownAs}}</p>
-        <p style="max-height:1rem;" class="text-muted">{{user.city}}</p>
+        <p class="card-text">{{user.knownAs | slice:0:20}} </p>
+        <p style="max-height:1rem;" class="text-muted">{{user.city | slice:0:20}}</p>
     </div>
     <div class="buttonsDiv d-flex">
         <button class="iconButton" routerLink="/user-detail/{{user.username}}"><i class="userIcon fas fa-house-user fa-2x"></i></button>

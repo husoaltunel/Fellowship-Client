@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
@@ -9,7 +10,7 @@ export class PhotoService {
 
   path: string;
 
-  constructor(private http: HttpService) {
+  constructor(private http: HttpService,httpClient : HttpClient) {
 
     this.path = "Photos/";
 
@@ -32,6 +33,8 @@ export class PhotoService {
   deletePhotoById(id : number) : Observable<any>{
     return this.http.delete(this.path,id)
   }
-
+  setProfilePhoto(id : number){
+    return this.http.put(this.path.concat(id.toString()),{});
+  }
 
 }

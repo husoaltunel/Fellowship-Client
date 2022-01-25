@@ -65,15 +65,18 @@
                             </div>
                             <div class="col-3">
                                 <h3 class="text-info mb-4">Upload Images</h3>
-                                <input id="imagesInput" multiple type="file" class="form-control"
-                                    (change)="upload($event)">
+                                <input id="imagesInput" multiple type="file" class="form-control" (change)="upload($event)">
+                                <button class="btn btn-sm btn-success mt-4" (click)="setProfilePhoto()" >Set as profile photo</button>
+                                <div>
+                                     <button class="btn btn-sm btn-danger btnDelete mt-2" (click)="deletePhotos()" >Delete photos</button>
+                                </div>
+                               
                             </div>
                         </div>
                     </div>
                     <div class="d-flex flex-wrap mt-2">
                         <div class="imageDiv d-flex justify-content-center flex-column" *ngFor="let image of images">
-                            <app-small-image [image]="image"></app-small-image>
-                            <button class="btn btn-sm btn-danger btnDelete mt-2" (click)="deletePhoto(image.id)" >Delete</button>
+                            <app-small-image #smallImage [image]="image" (click)="setSelectedImage(smallImage,image)" ></app-small-image>                           
                         </div>
                     </div>
 

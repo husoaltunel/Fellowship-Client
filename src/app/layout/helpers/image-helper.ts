@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { ElementRef, Injectable } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { PhotoModel } from "src/app/shared/models/photo.model";
 
@@ -52,6 +52,16 @@ export class ImageHelper {
 
     return image;
 
+  }
+
+  setSelectedImageBorder(element : ElementRef){
+    let el =  element.nativeElement;
+    el.style.border = '5px solid #ffc93c';
+  }
+  
+  removeSelectedImageBorder(element : ElementRef){
+    let el =  element.nativeElement;
+    el.style.border = "";
   }
 
 }
