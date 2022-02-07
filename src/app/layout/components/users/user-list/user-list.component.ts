@@ -23,6 +23,6 @@ export class UserListComponent implements OnInit {
   getUsers() : Observable<UserModel[]> {
     return this.userService.getUsers().pipe(
       map(response =>response.data)
-    );;
+    )
   }
 }

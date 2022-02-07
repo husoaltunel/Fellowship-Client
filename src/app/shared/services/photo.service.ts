@@ -8,7 +8,7 @@ import { HttpService } from './http.service';
 })
 export class PhotoService {
 
-  path: string;
+  private path: string;
 
   constructor(private http: HttpService,httpClient : HttpClient) {
 

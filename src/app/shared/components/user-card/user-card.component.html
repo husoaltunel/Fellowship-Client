@@ -6,8 +6,8 @@
         <p style="max-height:1rem;" class="text-muted">{{user.city | slice:0:20}}</p>
     </div>
     <div class="buttonsDiv d-flex">
-        <button class="iconButton" routerLink="/user-detail/{{user.username}}"><i class="userIcon fas fa-house-user fa-2x"></i></button>
-        <button class="iconButton"><i class="userIcon far fa-heart fa-2x"></i></button>
+        <button class="iconButton" routerLink="/user-detail/{{user.username}}"><i class="userIcon fas fa-house-user fa-2x" ></i></button>
+        <button class="iconButton" (click)="likeUser(user)" ><i class="userIcon"  [ngClass]="{'fas fa-heart fa-2x': liked }" [ngClass]="{'far fa-heart fa-2x': liked == false}" ></i></button>
         <button class="iconButton"><i class="userIcon fas fa-envelope fa-2x"></i></button>
     </div>
 </div>

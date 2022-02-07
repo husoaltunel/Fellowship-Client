@@ -1,6 +1,7 @@
 import { PhotoModel } from "./photo.model";
 
 export class UserModel {
+    id: number;
     username: string;
     imageUrl : string;
     email: string;

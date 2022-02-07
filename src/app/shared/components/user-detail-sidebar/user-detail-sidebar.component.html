@@ -8,9 +8,9 @@
     <label class="bg-info">Age</label>
     <li class="list-group-item">{{user.age}}</li>
     <label class="bg-info">Last Active</label>
-    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
+    <li class="list-group-item">{{user.lastActive | timeago}} </li>
     <label class="bg-info">Member since</label>
-    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
+    <li class="list-group-item">{{user.created | timeago}} </li>
 </ul>
 <ul class="list-group list-group-flush" *ngIf="!usersHelper.checkGenderIsMale(user.gender)">
     <label class="bg-danger">Location</label>
@@ -18,7 +18,7 @@
     <label class="bg-danger">Age</label>
     <li class="list-group-item">{{user.age}}</li>
     <label class="bg-danger">Last Active</label>
-    <li class="list-group-item">{{user.lastActive | date : 'medium'}} </li>
+    <li class="list-group-item">{{user.lastActive | timeago}} </li>
     <label class="bg-danger">Member since</label>
-    <li class="list-group-item">{{user.created | date : 'medium'}} </li>
+    <li class="list-group-item">{{user.created | timeago}} </li>
 </ul>
