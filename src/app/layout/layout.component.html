@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container">
-<mat-spinner class="mx-auto mt-auto" [diameter]="50" *ngIf="spinnerService.visibility | async; ngIfElse routerOutlet"></mat-spinner>
-<router-outlet #routerOutlet ></router-outlet>
-</div>
+    <mat-spinner class="mx-auto mt-auto" [diameter]="50"
+        *ngIf="spinnerService.visibility | async; ngIfElse routerOutlet"></mat-spinner>
 
+
+    <router-outlet #routerOutlet></router-outlet>
+</div>

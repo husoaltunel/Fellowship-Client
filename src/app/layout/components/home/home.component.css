@@ -1,0 +1,9 @@
+img{
+    max-width: 20rem;
+    width: 50%;
+    margin: 0.5rem;
+    border-radius: 2rem;
+}
+.registerDiv{
+    margin-left: 3rem;
+}
