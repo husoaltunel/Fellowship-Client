@@ -83,16 +83,42 @@ export class EditProfileComponent implements OnInit {
 
   upload(event: any) {
     const files = event.target.files
+    
     if (files) {
-      this.photoService.uploadPhotos(files).subscribe(response => {
+      if(this.validateFilesType(files)){
+        this.photoService.uploadPhotos(files).subscribe(response => {
         if (response.success) {
           this.sweetAlertService.success("Uploaded successfully");
           this.getPhotos();
           this.getProfilePhotoByUsername();
         }
       });
+      }
+      else{
+        alert("The file type must be png , jpg or jpeg")
+      }
+      
     }
   }
+
+  validateFilesType(files :any){
+    let isAllFilesAreImage : boolean = true;
+
+      Array.from(files).forEach((file:any) => {
+        var fileName = file.name;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile =="jpg" || extFile =="jpeg" || extFile =="png"){
+           
+        } 
+        else{
+          isAllFilesAreImage = false;
+        }  
+      });
+      
+    return isAllFilesAreImage;
+        
+    } 
 
   deletePhotos() {
     this.selectedImageIds.forEach(id => {

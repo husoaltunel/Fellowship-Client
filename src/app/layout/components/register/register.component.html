@@ -3,15 +3,20 @@
     <hr class="bg-dark w-50">
     <form #registerForm="ngForm" (ngSubmit)="register()">
         <div class="row mb-2">
-            <div class="col-3">
-                <label class="form-label mb-4">Username</label>
-                <label class="form-label mb-4">Password</label>
+            <div class="col-3 labelsDiv">
+                <label class="form-label">Username</label>
+                <label class="form-label">Password</label>
                 <label class="form-label">Email</label>
+                <label class="form-label">Gender</label>
             </div>
-            <div class="col-9">
-                <input name="username" class="form-control form-control-sm mb-3" type="text" [(ngModel)]="newUser.username">
-                <input name="password" class="form-control form-control-sm mb-3" type="password" [(ngModel)]="newUser.password">
+            <div class="col-9 inputsDiv">
+                <input name="username" class="form-control form-control-sm" type="text" [(ngModel)]="newUser.username">
+                <input name="password" class="form-control form-control-sm" type="password" [(ngModel)]="newUser.password">
                 <input name="email" class="form-control form-control-sm" type="email" [(ngModel)]="newUser.email">
+                <div class="d-flex radiosDiv">
+                    <label class="form-label">Female </label> <input class="form-check-input" type="radio" name="gender" value="female" [(ngModel)]="newUser.gender" />
+                    <label class="form-label">Male </label>  <input class="form-check-input" type="radio" name="gender" value="male" [(ngModel)]="newUser.gender" />
+                </div>
                 <div class="my-4 d-flex">
                     <button class="btn btn-info me-2">Register</button> <button class="btn btn-danger" (click)="cancel()">Cancel</button>
                 </div>

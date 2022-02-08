@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-3">
                                 <h3 class="text-info mb-4">Upload Images</h3>
-                                <input id="imagesInput" multiple type="file" class="form-control" (change)="upload($event)">
+                                <input id="imagesInput" multiple type="file" accept=".png, .jpg, .jpeg" class="form-control" (change)="upload($event)">
                                 <button class="btn btn-sm btn-success mt-4" (click)="setProfilePhoto()" >Set as profile photo</button>
                                 <div>
                                      <button class="btn btn-sm btn-danger btnDelete mt-2" (click)="deletePhotos()" >Delete photos</button>

@@ -1,0 +1,10 @@
+.inputsDiv input {
+    margin-bottom : 1rem;
+}
+
+.labelsDiv label {
+    margin-bottom :1.5rem;
+}
+.radiosDiv input {
+    margin-right : 2rem;
+}

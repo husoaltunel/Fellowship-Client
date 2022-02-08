@@ -1,4 +1,4 @@
-<img [src]="profileImagePath?.url" class="card-img-top" alt="...">
+<img [src]="profileImagePath?.url ? profileImagePath.url : '../../../../assets/images/no-profile.jpeg' " class="card-img-top" alt="...">
 <div class="card-body">
     <h5 class="card-title">{{user.knownAs}} </h5>
 </div>
